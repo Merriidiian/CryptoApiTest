@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoTestApi.WebApi", "CryptoTestApi.WebApi\CryptoTestApi.WebApi.csproj", "{710A4E68-0631-441D-BDEE-194FC76D5E2D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoTestApi.Application", "CryptoTestApi.Application\CryptoTestApi.Application.csproj", "{690E9D33-D4F6-405B-AA0E-27E1426077DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoTestApi.Infrastructure", "CryptoTestApi.Infrastructure\CryptoTestApi.Infrastructure.csproj", "{A422B838-D6B1-47C9-9BF0-8939180D98EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoTestApi.Domain", "CryptoTestApi.Domain\CryptoTestApi.Domain.csproj", "{5F9F3040-D71C-4A9E-AD6E-E219D8B8F592}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{710A4E68-0631-441D-BDEE-194FC76D5E2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{710A4E68-0631-441D-BDEE-194FC76D5E2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{710A4E68-0631-441D-BDEE-194FC76D5E2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{710A4E68-0631-441D-BDEE-194FC76D5E2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{690E9D33-D4F6-405B-AA0E-27E1426077DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{690E9D33-D4F6-405B-AA0E-27E1426077DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{690E9D33-D4F6-405B-AA0E-27E1426077DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{690E9D33-D4F6-405B-AA0E-27E1426077DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A422B838-D6B1-47C9-9BF0-8939180D98EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A422B838-D6B1-47C9-9BF0-8939180D98EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A422B838-D6B1-47C9-9BF0-8939180D98EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A422B838-D6B1-47C9-9BF0-8939180D98EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F9F3040-D71C-4A9E-AD6E-E219D8B8F592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F9F3040-D71C-4A9E-AD6E-E219D8B8F592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F9F3040-D71C-4A9E-AD6E-E219D8B8F592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F9F3040-D71C-4A9E-AD6E-E219D8B8F592}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
