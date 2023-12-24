@@ -34,9 +34,9 @@ public static class WalletExchangeByCurrency
                 .NotEmpty()
                 .Custom((x, context) =>
                 {
-                    if (x < 0)
+                    if (x <= 0)
                     {
-                        context.AddFailure("Курс не может быть меньше нуля");
+                        context.AddFailure("Курс не может быть меньше или равен нулю");
                     }
                 });
             RuleFor(x => x.Sum)
