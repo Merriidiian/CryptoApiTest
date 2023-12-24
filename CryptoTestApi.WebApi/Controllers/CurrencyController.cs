@@ -1,4 +1,5 @@
 ﻿using CryptoTestApi.Application.MediatR.Currency;
+using CryptoTestApi.DTOs.CurrencyDTO;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -7,7 +8,7 @@ namespace CryptoTestApi.Controllers;
 
 [ApiController]
 [Produces("application/json")]
-[Route("v{version:apiVersion}/[controller]/[action]")]
+[Route("/crypto/api/v{version:apiVersion}/[controller]/[action]")]
 [ProducesResponseType(typeof(ErrorDto), StatusCodes.Status400BadRequest)]
 public class CurrencyController : Controller
 {
@@ -18,10 +19,10 @@ public class CurrencyController : Controller
         _mediator = mediator;
     }
 
-    [HttpPost] 
-    [ProducesResponseType(typeof(CreateNewCurrency.CommandResult), StatusCodes.Status200OK)]
+    [HttpPost]
+    [ProducesResponseType(typeof(NewCurrencyDTO.Response), StatusCodes.Status200OK)]
     [SwaggerOperation("Добавить новую валюту")]
-    public async Task<ActionResult<CreateNewCurrency.CommandResult>> CreateNewCurrency(string? name,
+    public async Task<ActionResult<CreateNewCurrency.CommandResult>> CreateNewCurrency([FromQuery]string? name,
         CancellationToken cancellationToken)
     {
         var command = new CreateNewCurrency.Command(name);

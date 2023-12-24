@@ -22,10 +22,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="MediatR\Wallet" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\CryptoTestApi.Infrastructure\CryptoTestApi.Infrastructure.csproj" />
     </ItemGroup>
 

@@ -8,7 +8,7 @@ using Microsoft.OpenApi.Models;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers().AddNewtonsoftJson();
+builder.Services.AddControllers();
 builder.Services.AddApplication(builder.Configuration);
 
 builder.Services.AddApiVersioning();
@@ -33,17 +33,7 @@ app.UseForwardedHeaders(
 );
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger(
-        options =>
-        {
-            options.PreSerializeFilters.Add(
-                (swaggerDoc, httpReq) => swaggerDoc.Servers = new List<OpenApiServer>
-                {
-                    new() { Url = $"https://{httpReq.Host.Value}/crypto/api" },
-                }
-            );
-        }
-    );
+    app.UseSwagger();
     app.UseSwaggerUI();
 }
 

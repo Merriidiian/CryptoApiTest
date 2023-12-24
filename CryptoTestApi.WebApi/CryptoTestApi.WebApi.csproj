@@ -28,9 +28,4 @@
       <ProjectReference Include="..\CryptoTestApi.Infrastructure\CryptoTestApi.Infrastructure.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="DTOs\CurrencyDTO" />
-      <Folder Include="DTOs\WalletDTO" />
-    </ItemGroup>
-
 </Project>

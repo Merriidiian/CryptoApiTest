@@ -22,7 +22,7 @@ public static class CreateNewUser
         }
     }
 
-    public record CommandResult(string fullName, Guid id);
+    public record CommandResult(Guid id);
 
     public class Handler : IRequestHandler<Command, CommandResult>
     {
@@ -42,7 +42,7 @@ public static class CreateNewUser
                 FullName = request.fullName
             };
             await _repository.InsertAsync(newUser, cancellationToken);
-            return new CommandResult(newUser.FullName, newUser.Id);
+            return new CommandResult(newUser.Id);
         }
     }
 }

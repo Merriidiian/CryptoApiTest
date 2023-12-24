@@ -1,4 +1,5 @@
 ﻿using System.Net;
+using CryptoTestApi.Application;
 using FluentValidation;
 
 namespace CryptoTestApi.Middlewares;
@@ -21,8 +22,15 @@ public class ExceptionMiddleware
         }
         catch (ValidationException ex)
         {
+            context.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            await context.Response.WriteAsJsonAsync(new ErrorDto(string.Join("\n",
+                ex.Errors.Select(x => x.ErrorMessage))));
+        }
+        catch (CryptoException ex)
+        {
+            logger.LogCritical(ex, "Ошибка функциональности сервиса");
             context.Response.StatusCode = (int) HttpStatusCode.BadRequest;
-            await context.Response.WriteAsJsonAsync(new ErrorDto(string.Join("\n", ex.Errors.Select(x => x.ErrorMessage))));
+            await context.Response.WriteAsJsonAsync(new ErrorDto(ex.Message));
         }
         catch (Exception ex)
         {

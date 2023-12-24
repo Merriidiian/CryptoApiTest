@@ -4,6 +4,5 @@ namespace CryptoTestApi.Infrastructure.Repositories.Interfaces;
 
 public interface IWalletRepository : ICrudRepository<Wallet>
 {
-    Task<List<string>> InsertAllCurrencyNewUserAsync(Guid idUser, CancellationToken cancellationToken);
-    Task<List<string>> InsertAllUserNewCurrencyAsync(Guid idCurrency, CancellationToken cancellationToken);
+    Task<Wallet?> FindWalletAsync(Guid idUser, Guid idCurrency, CancellationToken cancellationToken);
 }

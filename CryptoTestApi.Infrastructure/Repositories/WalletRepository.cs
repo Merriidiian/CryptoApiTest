@@ -1,6 +1,7 @@
 ﻿using CryptoTestApi.Domain.Models;
 using CryptoTestApi.Infrastructure.Data.Contexts;
 using CryptoTestApi.Infrastructure.Repositories.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace CryptoTestApi.Infrastructure.Repositories;
 
@@ -8,7 +9,7 @@ public class WalletRepository : IWalletRepository
 {
     private readonly CryptoContext _context;
 
-    public WalletRepository (CryptoContext context)
+    public WalletRepository(CryptoContext context)
     {
         _context = context;
     }
@@ -23,9 +24,11 @@ public class WalletRepository : IWalletRepository
         throw new NotImplementedException();
     }
 
-    public async Task<Guid> InsertAsync(Wallet obj, CancellationToken cancellationToken)
+    public async Task<Guid> InsertAsync(Wallet wallet, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var newWallet = await _context.Wallets.AddAsync(wallet, cancellationToken);
+        await _context.SaveChangesAsync(cancellationToken);
+        return newWallet.Entity.Id;
     }
 
     public async Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken)
@@ -33,18 +36,23 @@ public class WalletRepository : IWalletRepository
         throw new NotImplementedException();
     }
 
-    public async Task<bool> UpdateAsync(Wallet obj, CancellationToken cancellationToken)
+    public async Task<bool> UpdateAsync(Wallet wallet, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        try
+        {
+            _context.Wallets.Update(wallet);
+            await _context.SaveChangesAsync(cancellationToken);
+            return true;
+        }
+        catch (Exception e)
+        {
+            return false;
+        }
     }
 
-    public async Task<List<string>> InsertAllCurrencyNewUserAsync(Guid idUser, CancellationToken cancellationToken)
+    public async Task<Wallet?> FindWalletAsync(Guid idUser, Guid idCurrency, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
-    }
-
-    public async Task<List<string>> InsertAllUserNewCurrencyAsync(Guid idCurrency, CancellationToken cancellationToken)
-    {
-        throw new NotImplementedException();
+        var wallet = await _context.Wallets.FirstOrDefaultAsync(w => w.UserId == idUser && w.CurrencyId == idCurrency, cancellationToken: cancellationToken);
+        return wallet ?? null;
     }
 }
