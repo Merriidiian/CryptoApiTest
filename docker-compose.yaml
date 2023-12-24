@@ -1,0 +1,48 @@
+version: "3"
+
+networks:
+  serdyukov-net:
+    external: true
+
+services:
+
+  backend:
+    container_name: backend_example
+    build:
+      dockerfile: ./Dockerfile
+      context: ./
+    environment:
+      ASPNETCORE_ConnectionStrings__Projects: 'Server=localhost; Port=5432;Database=Crypto;User Id=postgres;Password=root'
+      ASPNETCORE_ENVIRONMENT: 'Development'
+    restart: unless-stopped
+    ports:
+      - "5000:80"
+    networks:
+      - serdyukov-net
+    
+  postgres_db:
+    container_name: postgres_example
+    image: "postgres:latest"
+    environment:
+      TZ: "Europe/Moscow"
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "root"
+    restart: unless-stopped
+    volumes:
+      - /home/serdyukov/pm/postgresdata:/var/lib/postgresql/data
+#      - ./postgresdata:/var/lib/postgresql/data
+    ports:
+      - '44444:5432'
+    networks:
+      - serdyukov-net
+  
+  nginx:
+    build:
+      dockerfile: ./nginx.Dockerfile
+      context: ./
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+      - serdyukov-net
