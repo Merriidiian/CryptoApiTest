@@ -8,7 +8,7 @@ namespace CryptoTestApi.Application.MediatR.Wallet;
 public static class WalletExchangeByCurrency
 {
     public record Command(Guid IdUser, Guid IdCurrencyWithdraw, Guid IdCurrencyReplenishment, double ExchangeRate,
-        double Sum, double CommissionPercentage) : IRequest<CommandResult>;
+        double Sum, double CommissionPercentage = 0.05) : IRequest<CommandResult>;
 
     public class Validator : AbstractValidator<Command>
     {
